@@ -37,7 +37,3 @@ def remove_background():
 
     except Exception as e:
         return jsonify({"detail": f"An error occurred: {str(e)}"}), 500
-
-if __name__ == "__main__":
-    
-    app.run(port=8040)
