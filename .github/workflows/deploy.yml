@@ -20,12 +20,12 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
+        run: npm install
         working-directory: frontend  # Set the working directory to frontend
-        uses: bahmutov/npm-install@v1
 
       - name: Build project
-        working-directory: frontend  # Set the working directory to frontend
         run: npm run build
+        working-directory: frontend  # Set the working directory to frontend
         env:
           VITE_SERVER_URL: ${{ secrets.VITE_SERVER_URL }}  # Pass the .env secret
 
