@@ -20,17 +20,20 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
+        working-directory: frontend  # Set the working directory to frontend
         uses: bahmutov/npm-install@v1
 
       - name: Build project
+        working-directory: frontend  # Set the working directory to frontend
         run: npm run build
         env:
-          VITE_SERVER_URL: ${{ secrets.VITE_SERVER_URL }}
+          VITE_SERVER_URL: ${{ secrets.VITE_SERVER_URL }}  # Pass the .env secret
+
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v2
         with:
           name: production-files
-          path: ./dist
+          path: frontend/dist  # Set the correct path to the dist folder inside frontend
 
   deploy:
     name: Deploy
